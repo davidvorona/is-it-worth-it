@@ -1,4 +1,4 @@
-# Is It Worth it?
+# Reel Talk&trade;
 An app that generates a Reel&trade; score for currently playing movies (and more coming soon). User can create an account with preferences that affects the Reel&trade; scores of different queries.
 
 # Movies
