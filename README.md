@@ -24,4 +24,7 @@ An app that generates a ReelScore&trade; for currently playing movies, delivery,
 # Gas
 1. Ping gas prices API (which one?)
 2. Accept query from user.
-3. Using user's MPG and location (in preferences), and Google Maps API, determine within range of max distance the cheapest gas station user can go to.
+3. Determine the cheapest gas station user can go to within range of max distance, using:
+  1. User's MPG and location (in preferences)
+  2. Google Maps API
+  3. User's commutes for efficiency
