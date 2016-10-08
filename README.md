@@ -1,10 +1,10 @@
 # Reel Talk&trade;
-An app that generates a Reel&trade; score for currently playing movies, delivery, and local gas (and more coming soon). User can create an account with preferences that affects the Reel&trade; scores of different queries.
+An app that generates a ReelScore&trade; for currently playing movies, delivery, and local gas (and more coming soon). User can create an account with preferences that affects the ReelScores&trade; of different queries.
 
 # Movies
 1. Accept query from user.
 2. Scrape for data from metacritic.
-3. Generate Reel&trade; score based on:
+3. Generate ReelScore&trade; based on:
   1. Critic's rating
   2. Average viewer's rating
   3. Star power
