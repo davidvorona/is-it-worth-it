@@ -1,4 +1,4 @@
-# Reel Talk&trade;
+# Reel Talk
 An app that generates a ReelScore&trade; for currently playing movies, delivery, and local gas (and more coming soon). User can create an account with preferences that affects the ReelScores&trade; of different queries.
 
 # Movies
