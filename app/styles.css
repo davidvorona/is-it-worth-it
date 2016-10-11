@@ -1,0 +1,25 @@
+body {
+}
+
+.active {
+  color: #53acff;
+}
+
+.reelSearch {
+  position: absolute;
+  width: 40vw;
+  top: 40vh;
+  left: 50vw;
+  margin-left: -20vw;
+}
+
+.searchBar {
+  width: 30vw;
+  font-size: 3em;
+  text-align: center;
+  outline: none;
+}
+
+.query {
+  width: 10vw;
+}

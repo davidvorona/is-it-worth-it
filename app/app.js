@@ -2,20 +2,23 @@ import React, { Component } from 'react'
 import { Router, Route, Link, IndexRoute, hashHistory, browserHistory, IndexLink } from 'react-router'
 
 class App extends Component {
+  handleQuery() {
+    console.log('Searching...');
+    return;
+  }
+
   render() {
     return (
       // implement with browserHistory for cleaner URLs
       <Router history={hashHistory}>
         <Route path='/' component={Container}>
           <IndexRoute component={Home} />
-          // parentheses make the :name parameter optional
-          <Route path='/about(/:name)' component={About} />
-          <Route path='address' component={Address}>
-            <IndexRoute component={TwitterFeed} />
-            <Route path='instagram' component={Instagram} />
-            <Route path = 'query' component={Query} />
+          <Route path='account' component={Account}>
+            <IndexRoute component={Profile} />
+            <Route path='preferences' component={Preferences} />
+            <Route path = 'info' component={Query} />
           </Route>
-          <Route path='namedComponent' component={NamedComponents}>
+          <Route path='moreReel' component={MoreReel}>
             <IndexRoute components={{ title: Title, subTitle: SubTitle }} />
           </Route>
           // this must be last, or it will hit this route before hitting any of the specific ones
@@ -36,41 +39,40 @@ const Container = (props) => (
 const Nav = () => (
   <div>
     <IndexLink activeClassName='active' to='/'>Home</IndexLink>&nbsp;
-    <Link activeClassName='active' to='/address'>Address</Link>&nbsp;
-    <IndexLink activeClassName='active' to='/about'>About</IndexLink>&nbsp;
-    <IndexLink activeClassName='active' to='/namedComponent'>Named Components</IndexLink>&nbsp;
+    <Link activeClassName='active' to='/account'>Account</Link>&nbsp;
+    <IndexLink activeClassName='active' to='/moreReel'>More on Reel</IndexLink>&nbsp;
   </div>
 )
-const Home = () => <h1>Hello from Home!</h1>
-
-const About = (props) => (
-  <div>
-    <h3>Welcome to the About Page</h3>
-    { props.params.name && <h2>Hello, {props.params.name}</h2>}
+const Home = (props) => (
+  <div className="reelSearch">
+    <input className ="searchBar" placeholder="Search for a movie..."></input>
+    <div className='buttonContainer'>
+      <div className="query" onClick={props.handleQuery}>Search</div>
+    </div>
   </div>
 )
 
-const Address = (props) => (
+const Account = (props) => (
   <div>
     <br />
-    <IndexLink activeClassName='active' to='/address'>Twitter Feed</IndexLink>&nbsp;
-    <Link activeClassName='active' to='/address/instagram'>Instagram Feed</Link>&nbsp;
+    <IndexLink activeClassName='active' to='/account'>Profile</IndexLink>&nbsp;
+    <Link activeClassName='active' to='/account/preferences'>Preferences</Link>&nbsp;
     <Link
       activeClassName='active'
       to={{
-        pathname: '/address/query',
-        query: { message: 'Hello from Route Query' }
-      }}>Route Query
+        pathname: '/account/info',
+        query: { message: 'You have not set a password yet.' }
+      }}>Info
     </Link>
-    <h1>I live at 616 El Centro St.</h1>
+    <h1>Welcome, Vijuhas!</h1>
     {props.children}
   </div>
 )
 
-const Instagram = () => <h3>Instagram Feed</h3>
-const TwitterFeed = () => <h3>Twitter Feed</h3>
+const Preferences = () => <h3>Movie preferences / connected accounts</h3>
+const Profile = () => <h3>You look nice today.</h3>
 
-const NamedComponents = (props) => (
+const MoreReel = (props) => (
   <div>
     {props.title}
     <br />
@@ -79,10 +81,10 @@ const NamedComponents = (props) => (
 )
 
 const Title = () => (
-  <h1>Hello from Title Component</h1>
+  <h1>Hello from Delivery!</h1>
 )
 const SubTitle = () => (
-  <h1>Hello from SubTitle Component</h1>
+  <h1>Hello from Gas!</h1>
 )
 
 const Query = (props) => (
