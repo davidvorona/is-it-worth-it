@@ -13,6 +13,6 @@ app.use(function(req, res, next) {
 app.get('/scrape', scraperController.getData);
 
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
 
 module.exports = app;

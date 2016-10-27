@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Router, Route, Link, IndexRoute, hashHistory, browserHistory, IndexLink } from 'react-router'
+import React, { Component } from 'react';
+import { Router, Route, Link, IndexRoute, hashHistory, browserHistory, IndexLink } from 'react-router';
 
 class App extends Component {
   handleQuery() {

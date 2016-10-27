@@ -1,12 +1,12 @@
 module.exports = {
-  entry: './app/main.js',
+  entry: './containers/main.js',
   output: {
-    path: './app',
+    path: './webpack',
     filename: 'bundle.js'
   },
   devServer: {
     inline: true,
-    contentBase: './app',
+    contentBase: './containers',
     port: 3000
   },
   module: {
