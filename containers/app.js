@@ -2,11 +2,6 @@ import React, { Component } from 'react';
 import { Router, Route, Link, IndexRoute, hashHistory, browserHistory, IndexLink } from 'react-router';
 
 class App extends Component {
-  handleQuery() {
-    console.log('Searching...');
-    return;
-  }
-
   render() {
     return (
       // implement with browserHistory for cleaner URLs
@@ -27,12 +22,25 @@ class App extends Component {
       </Router>
     )
   }
+
+  _handleQuery(event) {
+    console.log('Oh boy!');
+  }
 }
 
-const Container = (props) => (
+const Container = props => (
   <div>
     <Nav />
     {props.children}
+  </div>
+)
+
+const Home = props => (
+  <div className="reelSearch">
+    <input className="searchBar" placeholder="Search for a movie..."></input>
+    <div className="buttonContainer">
+      <button className="query" onClick={props._handleQuery}>Search</button>
+    </div>
   </div>
 )
 
@@ -43,22 +51,14 @@ const Nav = () => (
     <IndexLink activeClassName='active' to='/moreReel'>More on Reel</IndexLink>&nbsp;
   </div>
 )
-const Home = (props) => (
-  <div className="reelSearch">
-    <input className ="searchBar" placeholder="Search for a movie..."></input>
-    <div className='buttonContainer'>
-      <div className="query" onClick={props.handleQuery}>Search</div>
-    </div>
-  </div>
-)
 
-const Account = (props) => (
+const Account = props => (
   <div>
     <br />
-    <IndexLink activeClassName='active' to='/account'>Profile</IndexLink>&nbsp;
-    <Link activeClassName='active' to='/account/preferences'>Preferences</Link>&nbsp;
+    <IndexLink activeClassName="active" to="/account">Profile</IndexLink>&nbsp;
+    <Link activeClassName="active" to="/account/preferences">Preferences</Link>&nbsp;
     <Link
-      activeClassName='active'
+      activeClassName="active"
       to={{
         pathname: '/account/info',
         query: { message: 'You have not set a password yet.' }
@@ -72,7 +72,7 @@ const Account = (props) => (
 const Preferences = () => <h3>Movie preferences / connected accounts</h3>
 const Profile = () => <h3>You look nice today.</h3>
 
-const MoreReel = (props) => (
+const MoreReel = props => (
   <div>
     {props.title}
     <br />
@@ -87,7 +87,7 @@ const SubTitle = () => (
   <h1>Hello from Gas!</h1>
 )
 
-const Query = (props) => (
+const Query = props => (
   <h2>{props.location.query.message}</h2>
 )
 

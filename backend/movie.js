@@ -7,22 +7,31 @@ mongoose.connection.once('open', () => {
 
 // place Schemas here
 const MovieSchema = new Schema({
-  htmlLink: String
+  htmlLink: String,
+  title: String,
+  critic: Object,
+  user: Object
 });
 
 // TODO: transition for movies
-module.exports = function(data) {
+module.exports = function (data) {
   const Movie = mongoose.model('Movie', MovieSchema);
-  let movie;
-  const links = Object.keys(data).map(function (key) {
-    return data[key];
+  Movie.remove({}, (err) => {
+    if (err) throw err;
+    console.log('Collection reset!');
   });
-  links.forEach(function(element, i, array) {
+  let movie;
+  data.forEach((element) => {
     movie = new Movie({
-      htmlLink: element
-      // created: new Date(data[dates][i].created),
+      htmlLink: element.link,
+      title: element.title,
+      critic: element.critic,
+      user: element.user
     });
-    movie.save();
+    movie.save((err) => {
+      if (err) throw err;
+      else console.log('Posted to database!')
+    });
   });
 };
 

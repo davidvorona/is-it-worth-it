@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "cheerio": "^0.22.0",
+    "connect-timeout": "^1.7.0",
     "eslint-plugin-import": "^2.0.1",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "mongodb": "^2.2.11",
