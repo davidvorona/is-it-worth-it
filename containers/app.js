@@ -1,89 +1,55 @@
 import React, { Component } from 'react';
 import { Router, Route, Link, IndexRoute, hashHistory, browserHistory, IndexLink } from 'react-router';
+import Preferences from '../components/preferences';
+import Account from '../components/account';
+import Home from '../components/home';
+import Container from '../components/nav';
+import Profile from '../components/profile';
+import MoreReel from '../components/tbd';
 
 class App extends Component {
+  // this should be moved to App and passed down
+  constructor(props) {
+    super(props);
+    this.state = { value: '' };
+    this.handleQuery = this.handleQuery.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({ value: event.target.value });
+  }
+
+  handleQuery() {
+    console.log(this.state.value);
+  }
+
   render() {
     return (
       // implement with browserHistory for cleaner URLs
       <Router history={hashHistory}>
-        <Route path='/' component={Container}>
+        <Route path="/" component={Container}>
           <IndexRoute component={Home} />
-          <Route path='account' component={Account}>
+          <Route path="account" component={Account}>
             <IndexRoute component={Profile} />
-            <Route path='preferences' component={Preferences} />
-            <Route path = 'info' component={Query} />
+            <Route path="preferences" component={Preferences} />
+            <Route path="info" component={Query} />
           </Route>
-          <Route path='moreReel' component={MoreReel}>
-            <IndexRoute components={{ title: Title, subTitle: SubTitle }} />
+          <Route path="moreReel" component={MoreReel}>
+            <IndexRoute components={{ title: Title, subtitle: Subtitle }} />
           </Route>
           // this must be last, or it will hit this route before hitting any of the specific ones
-          <Route path='*' component={NotFound} />
+          <Route path="*" component={NotFound} />
         </Route>
       </Router>
     )
   }
-
-  _handleQuery(event) {
-    console.log('Oh boy!');
-  }
 }
-
-const Container = props => (
-  <div>
-    <Nav />
-    {props.children}
-  </div>
-)
-
-const Home = props => (
-  <div className="reelSearch">
-    <input className="searchBar" placeholder="Search for a movie..."></input>
-    <div className="buttonContainer">
-      <button className="query" onClick={props._handleQuery}>Search</button>
-    </div>
-  </div>
-)
-
-const Nav = () => (
-  <div>
-    <IndexLink activeClassName='active' to='/'>Home</IndexLink>&nbsp;
-    <Link activeClassName='active' to='/account'>Account</Link>&nbsp;
-    <IndexLink activeClassName='active' to='/moreReel'>More on Reel</IndexLink>&nbsp;
-  </div>
-)
-
-const Account = props => (
-  <div>
-    <br />
-    <IndexLink activeClassName="active" to="/account">Profile</IndexLink>&nbsp;
-    <Link activeClassName="active" to="/account/preferences">Preferences</Link>&nbsp;
-    <Link
-      activeClassName="active"
-      to={{
-        pathname: '/account/info',
-        query: { message: 'You have not set a password yet.' }
-      }}>Info
-    </Link>
-    <h1>Welcome, Vijuhas!</h1>
-    {props.children}
-  </div>
-)
-
-const Preferences = () => <h3>Movie preferences / connected accounts</h3>
-const Profile = () => <h3>You look nice today.</h3>
-
-const MoreReel = props => (
-  <div>
-    {props.title}
-    <br />
-    {props.subTitle}
-  </div>
-)
 
 const Title = () => (
   <h1>Hello from Delivery!</h1>
 )
-const SubTitle = () => (
+const Subtitle = () => (
   <h1>Hello from Gas!</h1>
 )
 
