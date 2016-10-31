@@ -8,28 +8,15 @@ import Profile from '../components/profile';
 import MoreReel from '../components/tbd';
 
 class App extends Component {
-  // this should be moved to App and passed down
-  constructor(props) {
-    super(props);
-    this.state = { value: '' };
-    this.handleQuery = this.handleQuery.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({ value: event.target.value });
-  }
-
-  handleQuery() {
-    console.log(this.state.value);
-  }
 
   render() {
     return (
       // implement with browserHistory for cleaner URLs
       <Router history={hashHistory}>
         <Route path="/" component={Container}>
-          <IndexRoute component={Home} />
+          <IndexRoute
+            component={Home}
+          />
           <Route path="account" component={Account}>
             <IndexRoute component={Profile} />
             <Route path="preferences" component={Preferences} />
