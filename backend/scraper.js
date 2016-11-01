@@ -11,11 +11,12 @@ const scraperController = {
       }
     };
     let link;
+    let id;
     request(options, (error, response, html) => {
       const $ = cheerio.load(html);
       if (error) throw error;
       $('.product_title a').each(function () {
-        link = 'http://www.metacritic.com' + ($(this).attr('href'))
+        link = 'http://www.metacritic.com' + ($(this).attr('href'));
         scraperController.links.push(link);
       });
       next();
@@ -36,6 +37,7 @@ const scraperController = {
       }
       options.url = links[0];
       movie.link = links[0];
+      movie.title_id = movie.link.split('').splice(32).join('');
       request(options, (error, response, html) => {
         const $ = cheerio.load(html);
         if (error) throw error;

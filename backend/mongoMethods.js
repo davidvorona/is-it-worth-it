@@ -14,6 +14,7 @@ const mongoMethods = {
       movie = new Movie({
         htmlLink: element.link,
         title: element.title,
+        id: element.title_id,
         critic: element.critic,
         user: element.user
       });
