@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router, Route, Link, IndexRoute, hashHistory, browserHistory, IndexLink } from 'react-router';
+import { Router, Route, IndexRoute, hashHistory, browserHistory, IndexLink } from 'react-router';
 import Preferences from '../components/preferences';
 import Account from '../components/account';
 import Home from '../components/home';

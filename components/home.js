@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import apiFetch from '../actions/apiFetch';
 
 class Home extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class Home extends Component {
   }
 
   handleQuery() {
-    console.log(this.state.value);
+    apiFetch.fetchMovie(this.state.value);
   }
 
   render() {
