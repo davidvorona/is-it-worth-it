@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router, Route, IndexRoute, hashHistory, browserHistory, IndexLink } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory, IndexLink } from 'react-router';
 import Preferences from '../components/preferences';
 import Account from '../components/account';
 import Home from '../components/home';
@@ -12,7 +12,7 @@ class App extends Component {
   render() {
     return (
       // implement with browserHistory for cleaner URLs
-      <Router history={hashHistory}>
+      <Router history={browserHistory}>
         <Route path="/" component={Container}>
           <IndexRoute
             component={Home}
