@@ -1,27 +1,31 @@
+const Movie = require('./movie').model;
+const test = require('./movie').test;
 const mongoose = require('mongoose');
-const Movie = require('./movie')
 
 const mongoMethods = {
   clearMovies: () => {
     Movie.remove({}, (err) => {
       if (err) throw err;
+      else console.log('Database cleared!');
     });
   },
 
   saveMovies: (data) => {
-    let movie;
-    data.forEach((element) => {
-      movie = new Movie({
+    test('Connection test called in mongoMethods.saveMovies...');
+    let newMovie;
+    data.forEach((element, i) => {
+      newMovie = new Movie({
         htmlLink: element.link,
         title: element.title,
-        id: element.title_id,
+        title_id: element.title_id,
         critic: element.critic,
         user: element.user
       });
-      movie.save((err) => {
-        if (err) throw err;
-        else console.log('Posted to database!')
-      });
+      if (mongoose.connection === 1) {
+        newMovie.save((err) => {
+          if (err) return console.error("Error while saving data to MongoDB:", err);
+        });
+      } else console.log('Database is not connected.');
     });
   },
 
@@ -32,6 +36,6 @@ const mongoMethods = {
       next();
     });
   }
-}
+};
 
 module.exports = mongoMethods;

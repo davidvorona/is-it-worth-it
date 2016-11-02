@@ -2,15 +2,19 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // place Schemas here
-const MovieSchema = new Schema({
+const movieSchema = new Schema({
   htmlLink: String,
   title: String,
-  critic: Object,
-  user: Object
+  title_id: String,
+  critic: String,
+  user: String
 });
 
-const Movie = mongoose.model('Movie', MovieSchema);
+const Movie = {
+  model: mongoose.model('Movie', movieSchema),
+  test: string => console.log(string, mongoose.connection.readyState)
+};
 
 module.exports = Movie;
 
-// 'mongo mongodb-movie' to start mongo CLI and verify dbs
+// 'mongo reel-movies' to start mongo CLI and verify dbs

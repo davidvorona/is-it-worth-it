@@ -1,15 +1,13 @@
 const express = require('express');
 const app = express();
-const timeout = require('connect-timeout');
 const bodyParser = require('body-parser');
-const scraperController = require('./scraper');
-const mongoMethods = require('./mongoMethods');
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/mongodb-movie');
-mongoose.connection.once('open', () => {
-  console.log('Connected with MongoDB - Movies');
-});
+const mongoURI = 'mongodb://localhost/reel-movies';
+const db = mongoose.connect(mongoURI);
+const mongoMethods = require('./mongoMethods'); // ERR: running this and movie.js files before connection opens
+
+const scraperController = require('./scraper');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use((req, res, next) => {

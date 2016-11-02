@@ -11,7 +11,6 @@ const scraperController = {
       }
     };
     let link;
-    let id;
     request(options, (error, response, html) => {
       const $ = cheerio.load(html);
       if (error) throw error;
@@ -30,6 +29,7 @@ const scraperController = {
     };
     const movies = [];
     const movie = {};
+    scraperController.links.length = 5;
     const recursiveRequest = (links, length) => {
       if (length === 0) {
         res.send(movies);
@@ -44,8 +44,8 @@ const scraperController = {
         let count = 0;
         $('.metascore_anchor').each(function () {
           count += 1;
-          if (count === 1) movie.critic = $(this).text();
-          else if (count === 2) movie.user = $(this).text();
+          if (count === 1) movie.critic = $(this).text().trim();
+          else if (count === 2) movie.user = $(this).text().trim();
           else return;
         });
         movie.title = $('.product_title').first().text().trim();
