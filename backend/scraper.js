@@ -21,7 +21,7 @@ const scraperController = {
       next();
     });
   },
-  getData: (req, res) => {
+  getData: (req, res, next) => {
     const options = {
       headers: {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36'
@@ -29,10 +29,10 @@ const scraperController = {
     };
     const movies = [];
     const movie = {};
-    scraperController.links.length = 5;
     const recursiveRequest = (links, length) => {
       if (length === 0) {
-        res.send(movies);
+        req.movies = movies;
+        next();
         return;
       }
       options.url = links[0];

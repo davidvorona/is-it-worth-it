@@ -1,32 +1,32 @@
-const Movie = require('./movie').model;
-const test = require('./movie').test;
+const Movie = require('./movie');
 const mongoose = require('mongoose');
 
 const mongoMethods = {
-  clearMovies: () => {
+  clearMovies: (req, res, next) => {
     Movie.remove({}, (err) => {
       if (err) throw err;
       else console.log('Database cleared!');
+      next();
     });
   },
 
-  saveMovies: (data) => {
-    test('Connection test called in mongoMethods.saveMovies...');
+  saveMovies: (req, res) => {
     let newMovie;
-    data.forEach((element, i) => {
-      newMovie = new Movie({
-        htmlLink: element.link,
-        title: element.title,
-        title_id: element.title_id,
-        critic: element.critic,
-        user: element.user
-      });
-      if (mongoose.connection === 1) {
-        newMovie.save((err) => {
-          if (err) return console.error("Error while saving data to MongoDB:", err);
+    if (mongoose.connection.readyState === 1) {
+      req.movies.forEach((element) => {
+        newMovie = new Movie({
+          htmlLink: element.link,
+          title: element.title,
+          title_id: element.title_id,
+          critic: element.critic,
+          user: element.user
         });
-      } else console.log('Database is not connected.');
-    });
+        newMovie.save((err) => {
+          if (err) return console.error('Error while saving data to database:', err);
+        });
+      });
+      console.log('Migration complete.');
+    } else console.log('Database is not connected.');
   },
 
   getMovie: (req, res, next) => {

@@ -4,8 +4,8 @@ const bodyParser = require('body-parser');
 
 const mongoose = require('mongoose');
 const mongoURI = 'mongodb://localhost/reel-movies';
-const db = mongoose.connect(mongoURI);
-const mongoMethods = require('./mongoMethods'); // ERR: running this and movie.js files before connection opens
+mongoose.connect(mongoURI);
+const mongoMethods = require('./mongoMethods');
 
 const scraperController = require('./scraper');
 
@@ -18,7 +18,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/scrape', scraperController.getLinks, scraperController.getData);
+app.get('/scrape', scraperController.getLinks, scraperController.getData, mongoMethods.clearMovies, mongoMethods.saveMovies);
 
 app.get('/movie/:title', mongoMethods.getMovie, (req, res) => {
   res.json(req.movie);

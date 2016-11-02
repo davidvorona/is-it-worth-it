@@ -10,10 +10,7 @@ const movieSchema = new Schema({
   user: String
 });
 
-const Movie = {
-  model: mongoose.model('Movie', movieSchema),
-  test: string => console.log(string, mongoose.connection.readyState)
-};
+const Movie = mongoose.model('Movie', movieSchema);
 
 module.exports = Movie;
 
