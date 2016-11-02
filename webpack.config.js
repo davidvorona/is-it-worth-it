@@ -7,7 +7,8 @@ module.exports = {
   devServer: {
     inline: true,
     contentBase: './containers',
-    port: 3000
+    port: 8080,
+    headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true' }
   },
   module: {
     loaders: [

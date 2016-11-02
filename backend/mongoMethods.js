@@ -30,7 +30,7 @@ const mongoMethods = {
   },
 
   getMovie: (req, res, next) => {
-    Movie.findOne({ title: req.params.title }, (err, movie) => {
+    Movie.findOne({ title_id: req.params.title }, (err, movie) => {
       if (err) throw err;
       else req.movie = movie;
       next();

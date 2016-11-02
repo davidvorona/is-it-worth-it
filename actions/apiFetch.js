@@ -10,9 +10,10 @@ const apiFetch = {
   fetchMovie: (title) => {
     const query = apiFetch.transformQuery(title);
 
-    axios.get(`/movie/${query}`)
+    axios.get(`http://localhost:3000/movie/${query}`)
       .then((response) => {
-        console.log(response);
+        if (response.data === null) console.log('This movie is not out in theaters.');
+        else console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
