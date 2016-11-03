@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import movieActions from '../actions/movieActions';
+import movieActions from './movieActions';
 
-class Home extends Component {
+class Movie extends Component {
   constructor(props) {
     super(props);
     this.state = { value: '' };
@@ -40,4 +40,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default Movie;

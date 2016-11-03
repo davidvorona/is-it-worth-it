@@ -5,16 +5,18 @@ const Nav = () => (
   <div>
     <IndexLink activeClassName="active" to="/">Home</IndexLink>&nbsp;
     <Link activeClassName="active" to="/account">Account</Link>&nbsp;
-    <Link activeClassName="active" to="/login">Login</Link>&nbsp;
-    <Link activeClassName="active" to="/join">Join ReelTalk</Link>
+    <div className="signin">
+      <Link activeClassName="active" to="/join">Join Reel</Link>&nbsp;
+      <Link activeClassName="active" to="/login">Login</Link>
+    </div>
   </div>
 );
 
-const Container = props => (
+const NavContainer = props => (
   <div>
     <Nav />
     {props.children}
   </div>
 );
 
-export default Container;
+export default NavContainer;

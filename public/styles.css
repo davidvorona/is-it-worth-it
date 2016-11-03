@@ -26,3 +26,15 @@ body {
   width: 15vw;
   height: 2.5vw;
 }
+
+.signin {
+  float: right;
+}
+
+.signin-field {
+  display: inline-table;
+  position: absolute;
+  width: 15vw;
+  left: 50vw;
+  margin-left: -7.5vw;
+}

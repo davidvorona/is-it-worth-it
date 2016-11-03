@@ -11,7 +11,8 @@ const Account = props => (
       to={{
         pathname: '/account/info',
         query: { message: 'You have not set a password yet.' }
-      }}>Info
+      }}
+    >Username/Password
     </Link>
     <h1>Welcome, Vijuhas!</h1>
     {props.children}

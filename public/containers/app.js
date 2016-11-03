@@ -2,8 +2,8 @@ import React from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import Movie from '../movies/movieContainer';
 import Preferences from '../preferences/preferencesContainer';
-import Account from '../preferences/account';
-import Container from './nav';
+import Account from '../preferences/accountContainer';
+import NavContainer from './nav';
 import Profile from '../preferences/profile';
 import NewUser from '../user/newUser';
 import ExistingUser from '../user/existingUser';
@@ -14,7 +14,7 @@ const Query = props => (
 
 const App = () => (
   <Router history={browserHistory}>
-    <Route path="/" component={Container}>
+    <Route path="/" component={NavContainer}>
       <IndexRoute component={Movie} />
       <Route path="account" component={Account}>
         <IndexRoute component={Profile} />

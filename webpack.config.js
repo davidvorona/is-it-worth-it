@@ -1,12 +1,12 @@
 module.exports = {
-  entry: './containers/main.js',
+  entry: './public/containers/main.js',
   output: {
-    path: './webpack',
+    path: './public/webpack',
     filename: 'bundle.js'
   },
   devServer: {
     inline: true,
-    contentBase: './containers',
+    contentBase: './public/containers',
     port: 8080,
     proxy: {
       '/movie/*': { target: 'http://localhost:3000' },

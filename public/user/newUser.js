@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import userActions from '../actions/userActions';
+import userActions from './userActions';
 
-class ExistingUser extends Component {
+class NewUser extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      firstName: '',
+      lastName: '',
       username: '',
       password: ''
     };
@@ -13,17 +15,21 @@ class ExistingUser extends Component {
   }
 
   handleChange(event) {
-    if (event.target.className === 'username') this.setState({ username: event.target.value });
+    if (event.target.className === 'firstName') this.setState({ firstName: event.target.value });
+    else if (event.target.className === 'lastName') this.setState({ lastName: event.target.value });
+    else if (event.target.className === 'username') this.setState({ username: event.target.value });
     else if (event.target.className === 'password') this.setState({ password: event.target.value });
   }
 
   handleQuery(event) {
     event.preventDefault();
     const user = {
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
       username: this.state.username,
       password: this.state.password
     };
-    userActions.getUser(user);
+    userActions.createUser(user);
   }
 
   render() {
@@ -31,6 +37,20 @@ class ExistingUser extends Component {
       <div>
         <div>Sign In!</div>
         <form>
+          <input
+            type="text"
+            className="firstName"
+            placeholder="First Name"
+            value={this.state.firstName}
+            onChange={this.handleChange}
+          />
+          <input
+            type="text"
+            className="lastName"
+            placeholder="Last Name"
+            value={this.state.lastName}
+            onChange={this.handleChange}
+          />
           <input
             type="text"
             className="username"
@@ -49,7 +69,7 @@ class ExistingUser extends Component {
             className="query"
             onClick={this.handleQuery}
           >
-            Log In!
+            Create Account!
           </button>
         </form>
       </div>
@@ -57,4 +77,4 @@ class ExistingUser extends Component {
   }
 }
 
-export default ExistingUser;
+export default NewUser;

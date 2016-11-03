@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import userActions from '../actions/userActions';
+import userActions from './userActions';
 
-class NewUser extends Component {
+class ExistingUser extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: '',
-      lastName: '',
       username: '',
       password: ''
     };
@@ -15,42 +13,24 @@ class NewUser extends Component {
   }
 
   handleChange(event) {
-    if (event.target.className === 'firstName') this.setState({ firstName: event.target.value });
-    else if (event.target.className === 'lastName') this.setState({ lastName: event.target.value });
-    else if (event.target.className === 'username') this.setState({ username: event.target.value });
+    if (event.target.className === 'username') this.setState({ username: event.target.value });
     else if (event.target.className === 'password') this.setState({ password: event.target.value });
   }
 
   handleQuery(event) {
     event.preventDefault();
     const user = {
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
       username: this.state.username,
       password: this.state.password
     };
-    userActions.createUser(user);
+    userActions.getUser(user);
   }
 
   render() {
     return (
       <div>
         <div>Sign In!</div>
-        <form>
-          <input
-            type="text"
-            className="firstName"
-            placeholder="First Name"
-            value={this.state.firstName}
-            onChange={this.handleChange}
-          />
-          <input
-            type="text"
-            className="lastName"
-            placeholder="Last Name"
-            value={this.state.lastName}
-            onChange={this.handleChange}
-          />
+        <form className="signin-field">
           <input
             type="text"
             className="username"
@@ -77,4 +57,4 @@ class NewUser extends Component {
   }
 }
 
-export default NewUser;
+export default ExistingUser;
