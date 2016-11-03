@@ -15,6 +15,7 @@ class Home extends Component {
 
   handleQuery(event) {
     event.preventDefault();
+    console.log(this.state);
     apiFetch.fetchMovie(this.state.value);
   }
 

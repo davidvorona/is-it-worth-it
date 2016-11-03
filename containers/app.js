@@ -9,12 +9,14 @@ import Profile from '../components/profile';
 import NewUser from '../components/newUser';
 import ExistingUser from '../components/existingUser';
 
+const Query = props => (
+  <h2>{props.location.query.message}</h2>
+);
+
 const App = () => (
   <Router history={browserHistory}>
     <Route path="/" component={Container}>
-      <IndexRoute
-        component={Home}
-      />
+      <IndexRoute component={Home} />
       <Route path="account" component={Account}>
         <IndexRoute component={Profile} />
         <Route path="preferences" component={Preferences} />
@@ -26,10 +28,6 @@ const App = () => (
       </Route>
     </Route>
   </Router>
-);
-
-const Query = props => (
-  <h2>{props.location.query.message}</h2>
 );
 
 export default App;
