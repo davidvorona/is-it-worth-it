@@ -5,7 +5,7 @@ const Nav = () => (
   <div>
     <IndexLink activeClassName="active" to="/">Home</IndexLink>&nbsp;
     <Link activeClassName="active" to="/account">Account</Link>&nbsp;
-    <IndexLink activeClassName="active" to="/signin">Sign In</IndexLink>&nbsp;
+    <Link activeClassName="active" to="/user">Sign In</Link>&nbsp;
   </div>
 );
 

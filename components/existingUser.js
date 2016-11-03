@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ExistingUser = () => (
-  <div className="existingUser">Sign In!</div>
+  <div>Sign In!</div>
 );
 
 export default ExistingUser;
