@@ -13,29 +13,29 @@ class Home extends Component {
     this.setState({ value: event.target.value });
   }
 
-  handleQuery() {
+  handleQuery(event) {
+    event.preventDefault();
     apiFetch.fetchMovie(this.state.value);
   }
 
   render() {
     return (
-      <div className="reelSearch">
+      <form className="reelSearch">
         <input
           type="text"
           className="searchBar"
           placeholder="Search for a movie..."
           value={this.state.value}
           onChange={this.handleChange}
+          onSubmit={this.handleQuery}
         />
-        <div className="buttonContainer">
-          <button
-            className="query"
-            onClick={this.handleQuery}
-          >
-            Search
-          </button>
-        </div>
-      </div>
+        <button
+          className="query"
+          onClick={this.handleQuery}
+        >
+          Search
+        </button>
+      </form>
     );
   }
 }
