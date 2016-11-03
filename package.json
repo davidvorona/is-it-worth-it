@@ -4,17 +4,19 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "nodemon ./backend/server.js",
-    "db": "node backend/save.js"
+    "start": "nodemon ./server/server.js",
+    "db": "node ./server/save.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.15.2",
+    "bcrypt": "^0.8.7",
     "body-parser": "^1.15.2",
     "cheerio": "^0.22.0",
     "connect-timeout": "^1.7.0",
+    "cookie-parser": "^1.4.3",
     "eslint-plugin-import": "^2.0.1",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "express": "^4.14.0",

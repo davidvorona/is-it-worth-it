@@ -5,7 +5,8 @@ const Nav = () => (
   <div>
     <IndexLink activeClassName="active" to="/">Home</IndexLink>&nbsp;
     <Link activeClassName="active" to="/account">Account</Link>&nbsp;
-    <Link activeClassName="active" to="/user">Sign In</Link>&nbsp;
+    <Link activeClassName="active" to="/login">Login</Link>&nbsp;
+    <Link activeClassName="active" to="/join">Join ReelTalk</Link>
   </div>
 );
 

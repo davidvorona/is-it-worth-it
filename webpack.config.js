@@ -8,7 +8,11 @@ module.exports = {
     inline: true,
     contentBase: './containers',
     port: 8080,
-    proxy: { '/movie/*': { target: 'http://localhost:3000' } }
+    proxy: {
+      '/movie/*': { target: 'http://localhost:3000' },
+      '/join': { target: 'http://localhost:3000' },
+      '/login': { target: 'http://localhost:3000' }
+    }
   },
   module: {
     loaders: [

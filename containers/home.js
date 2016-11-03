@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import apiFetch from '../actions/apiFetch';
+import movieActions from '../actions/movieActions';
 
 class Home extends Component {
   constructor(props) {
@@ -15,8 +15,7 @@ class Home extends Component {
 
   handleQuery(event) {
     event.preventDefault();
-    console.log(this.state);
-    apiFetch.fetchMovie(this.state.value);
+    movieActions.fetchMovie(this.state.value);
   }
 
   render() {

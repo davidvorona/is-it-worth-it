@@ -1,7 +1,6 @@
 import React from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import Home from './home';
-import SignIn from './user';
 import Preferences from '../components/preferences';
 import Account from '../components/account';
 import Container from '../components/nav';
@@ -22,10 +21,8 @@ const App = () => (
         <Route path="preferences" component={Preferences} />
         <Route path="info" component={Query} />
       </Route>
-      <Route path="user" component={SignIn}>
-        <IndexRoute component={ExistingUser} />
-        <Route path="create" component={NewUser} />
-      </Route>
+      <Route path="login" component={ExistingUser} />
+      <Route path="join" component={NewUser} />
     </Route>
   </Router>
 );

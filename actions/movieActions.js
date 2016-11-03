@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiFetch = {
+const movieActions = {
   transformQuery: (title) => {
     let query = title;
     query = query.trim().toLowerCase().replace(/[^\w\s]/gi, '').replace(/\s+/g, '-');
@@ -8,7 +8,7 @@ const apiFetch = {
   },
 
   fetchMovie: (title) => {
-    const query = apiFetch.transformQuery(title);
+    const query = movieActions.transformQuery(title);
 
     axios.get(`/movie/${query}`)
       .then((response) => {
@@ -21,4 +21,4 @@ const apiFetch = {
   }
 };
 
-export default apiFetch;
+export default movieActions;
